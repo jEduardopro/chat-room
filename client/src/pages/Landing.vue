@@ -10,7 +10,11 @@
 						v-model="username" 
 						autofocus 
 					/>
-					<button class="p-2 w-32 text-md bg-blue-800 hover:bg-blue-700 outline-none text-white rounded" @click="join">
+					<button 
+						class="p-2 w-32 text-md bg-blue-800 hover:bg-blue-700 outline-none text-white rounded disabled:opacity-50" 
+						:disabled="!username.trim().length"
+						@click="join"						
+					>
 						Join
 					</button>
 				</div>
@@ -24,6 +28,7 @@
 import { onMounted, ref } from 'vue';
 import { useStore } from 'vuex';
 import { socket } from '../socket'
+import { useRouter } from 'vue-router';
 
 onMounted(() => {
 	setSocket();
@@ -33,6 +38,7 @@ onMounted(() => {
 	})
 })
 
+const router = useRouter()
 const store = useStore();
 const username = ref('')
 
@@ -41,6 +47,10 @@ const setSocket = () => {
 }
 
 const join = () => {
+	if (!username.value.trim().length) {
+		return
+	}
+	router.push('/chat')
 	// console.log('send', message.value);
 	// socket.emit('send-message', message.value)
 

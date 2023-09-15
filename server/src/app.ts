@@ -3,14 +3,13 @@ import dotenv from 'dotenv'
 import http from 'http'
 import {Server} from 'socket.io'
 import cors from 'cors'
-import { chats } from './data/data'
 import { connectDB } from './config/db'
 import 'colorts/lib/string';
+import userRoutes from './routes/userRoutes'
 
 dotenv.config()
 const port = process.env.PORT || 3000;
 
-connectDB()
 const app = express()
 app.use(cors())
 app.use(express.json())
@@ -23,42 +22,31 @@ const io = new Server(httpServer, {
 	}
 })
 
-app.get('/', (req, res) => {
-	res.json({ msg: 'Hello world from socket' })
-})
-
-app.get('/api/chat', (req, res) => {
-	res.json(chats)
-})
-
-app.get('/api/chat/:id', (req, res) => {
-	const chatId = req.params.id
-	const chat = chats.find((c) => c._id === chatId)
-	res.json(chat)
-})
-
-io.on('connection', (socket) => {
-	console.log('Connection is ready');
-	socket.on('send-message', (msg) => {
-		console.log('msg received: ', msg)
-		socket.emit('message-from-server', msg)
-		// io.emit('message-broadcast', msg)
-	})
-	socket.on('disconnect', () => {
-		console.log('User disconnected');
-	})
-})
-
-
 const main = async () => {
 	try {
+
+		await connectDB()
+
+		app.use('/api/user', userRoutes)
+
+		io.on('connection', (socket) => {
+			console.log('Connection is ready');
+			socket.on('send-message', (msg) => {
+				console.log('msg received: ', msg)
+				socket.emit('message-from-server', msg)
+				// io.emit('message-broadcast', msg)
+			})
+			socket.on('disconnect', () => {
+				console.log('User disconnected');
+			})
+		})
 		
 		httpServer.listen(port, () => {
 			console.log(`Server running on port ${port}`.yellow.bold)
 		})
 
 	} catch (error) {
-		
+		console.log(`Error: ${error.message}`.red.bold);
 	}
 }
 

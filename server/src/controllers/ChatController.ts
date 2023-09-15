@@ -17,12 +17,12 @@ const getChat = async (req: Request, res: Response) => {
 			{ users: { $elemMatch: { $eq: user_id } } },
 		]
 	}).populate('users')
-		.populate('latestMessage')
+		.populate({ path: 'latestMessage', strictPopulate: false })
 	
 	const userChat = await User.populate(chat, { path: 'latestMessage.sender', select: 'name pic' })
 
 	if (userChat.length > 0) {
-		return res.status(200).json(userChat)
+		return res.status(200).json(userChat[0])
 	}
 
 	const userForChat = await User.findById(user_id).select('name')

@@ -1,21 +1,18 @@
 import { createStore } from 'vuex'
-import { SocketState } from './modules/state'
+import { SocketState } from './modules/socket/state'
+import { UserState } from './modules/user/state';
 
-// My custom modules
-import socketModule from './modules';
-// import { ExampleStateInterface } from './module-template/state';
-
+import socketModule from './modules/socket';
+import userModule from './modules/user';
 
 export interface StateInterface {
-  // Define your own store structure, using submodules if needed
-  // example: ExampleStateInterface;
-  // Declared as unknown to avoid linting issue. Best to strongly type as per the line above.
-  socket: SocketState
+	socket: SocketState
+	user: UserState
 }
 
 export default createStore<StateInterface>({
   modules: {
-		// example: exampleModule
-		socket: socketModule
+		socket: socketModule,
+		user: userModule
   }
 })

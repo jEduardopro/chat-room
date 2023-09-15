@@ -18,4 +18,19 @@ const router = createRouter({
 	routes
 })
 
+
+// router.beforeEach((to, from, next) => {
+
+// 	const userAuthLS = localStorage.getItem('auth-user')
+// 	if (!userAuthLS && to.name !== 'Home') {
+// 		return router.replace({ name: 'Home' })
+// 	}
+
+// 	if (userAuthLS && to.name === 'Home') {
+// 		return router.replace({ name: 'Chat' })
+// 	}
+
+// 	next()
+// })
+
 export default router

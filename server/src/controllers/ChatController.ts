@@ -27,8 +27,8 @@ const getChat = async (req: Request, res: Response) => {
 
 	const userForChat = await User.findById(user_id).select('name')
 
-	const newChat = await Chat.create({chatName: userForChat.name, users: [user, user_id]	})
-	const newUserChat = await Chat.findOne({ _id: newChat._id }).populate('users')
+	const newChat = await Chat.create({chatName: userForChat.name, users: [user, user_id], lastestMessage: null	})
+	const newUserChat = await Chat.findOne({ _id: newChat._id }).populate('users').populate({ path: 'latestMessage', strictPopulate: false})
 	return res.status(200).json(newUserChat)
 }
 

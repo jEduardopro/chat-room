@@ -13,15 +13,17 @@ const registerUser = async (req: Request, res: Response) => {
 	const userExists = await User.findOne({ name })
 
 	if (userExists) {
-		return res.status(400).json({
-			message: "User already exists"
+		return res.status(200).json({
+			_id: userExists._id,
+			name: userExists.name,
+			pic: userExists.pic,
 		})
 	}
 
 	const user = await User.create({ name })
 	
 	if (user) {
-		return res.status(201).json({
+		return res.status(200).json({
 			_id: user._id,
 			name: user.name,
 			pic: user.pic,
@@ -33,12 +35,11 @@ const registerUser = async (req: Request, res: Response) => {
 	})
 }
 
-const allUsers = async (req: Request, res: Response) => {
-	
+const allUsers = async (req: Request, res: Response) => {	
 	const pattern = req.query.q ? {
 		$or: [
-			{ name: { $regex: req.query.q, $options: 'i' } }
-		]
+			{ name: { $regex: req.query.q, $options: 'i' } },
+		],
 	} : {}
 
 	const users = await User.find(pattern)

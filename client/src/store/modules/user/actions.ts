@@ -1,9 +1,9 @@
 import { ActionTree } from 'vuex';
-import { SocketState } from './state';
-import { StateInterface } from '../index';
+import { UserState } from './state';
+import { StateInterface } from '../../index';
 
 
-const actions: ActionTree<SocketState, StateInterface> = {
+const actions: ActionTree<UserState, StateInterface> = {
 	someAction( /*{ commit }, payload  */) {
 		// a line to prevent linter errors
 	}

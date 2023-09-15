@@ -6,6 +6,7 @@ import cors from 'cors'
 import { connectDB } from './config/db'
 import 'colorts/lib/string';
 import userRoutes from './routes/userRoutes'
+import chatRoutes from './routes/chatRoutes'
 
 dotenv.config()
 const port = process.env.PORT || 3000;
@@ -28,6 +29,7 @@ const main = async () => {
 		await connectDB()
 
 		app.use('/api/user', userRoutes)
+		app.use('/api/chat', chatRoutes)
 
 		io.on('connection', (socket) => {
 			console.log('Connection is ready');

@@ -33,4 +33,18 @@ const registerUser = async (req: Request, res: Response) => {
 	})
 }
 
-export { registerUser }
+const allUsers = async (req: Request, res: Response) => {
+	
+	const pattern = req.query.q ? {
+		$or: [
+			{ name: { $regex: req.query.q, $options: 'i' } }
+		]
+	} : {}
+
+	const users = await User.find(pattern)
+
+	res.json(users)
+	
+}
+
+export { allUsers, registerUser }

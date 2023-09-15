@@ -4,10 +4,13 @@ import http from 'http'
 import {Server} from 'socket.io'
 import cors from 'cors'
 import { chats } from './data/data'
+import { connectDB } from './config/db'
+import 'colorts/lib/string';
 
 dotenv.config()
 const port = process.env.PORT || 3000;
 
+connectDB()
 const app = express()
 app.use(cors())
 app.use(express.json())
@@ -51,7 +54,7 @@ const main = async () => {
 	try {
 		
 		httpServer.listen(port, () => {
-			console.log(`Server running on port ${port}`)
+			console.log(`Server running on port ${port}`.yellow.bold)
 		})
 
 	} catch (error) {

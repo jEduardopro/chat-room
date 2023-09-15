@@ -1,8 +1,11 @@
 import express from 'express'
+import dotenv from 'dotenv'
 import http from 'http'
 import {Server} from 'socket.io'
 import cors from 'cors'
+import { chats } from './data/data'
 
+dotenv.config()
 const port = process.env.PORT || 3000;
 
 const app = express()
@@ -21,9 +24,28 @@ app.get('/', (req, res) => {
 	res.json({ msg: 'Hello world from socket' })
 })
 
+app.get('/api/chat', (req, res) => {
+	res.json(chats)
+})
+
+app.get('/api/chat/:id', (req, res) => {
+	const chatId = req.params.id
+	const chat = chats.find((c) => c._id === chatId)
+	res.json(chat)
+})
+
 io.on('connection', (socket) => {
 	console.log('Connection is ready');
+	socket.on('send-message', (msg) => {
+		console.log('msg received: ', msg)
+		socket.emit('message-from-server', msg)
+		// io.emit('message-broadcast', msg)
+	})
+	socket.on('disconnect', () => {
+		console.log('User disconnected');
+	})
 })
+
 
 const main = async () => {
 	try {

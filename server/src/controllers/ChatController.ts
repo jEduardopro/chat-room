@@ -32,4 +32,23 @@ const getChat = async (req: Request, res: Response) => {
 	return res.status(200).json(newUserChat)
 }
 
-export { getChat }
+const getChatsByUser = async (req: Request, res: Response) => {
+
+	if (!req.params.user) {
+		return res.status(400).json({
+			message: "Current User ID is required"
+		})
+	}
+	
+	Chat.find({ users: { $elemMatch: { $eq: req.params.user } } })
+		.populate('users')
+		.populate({ path: 'latestMessage', strictPopulate: false })
+		.sort({ updatedAt: -1 })
+		.then(async (chats) => {
+			const results = await User.populate(chats, { path: 'latestMessage.sender', select: 'name pic', strictPopulate: false })
+
+			res.status(200).json(results)
+		})
+}
+
+export { getChat, getChatsByUser }

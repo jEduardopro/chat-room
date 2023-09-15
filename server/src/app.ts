@@ -10,7 +10,12 @@ app.use(cors())
 app.use(express.json())
 
 const httpServer = http.createServer(app)
-const io = new Server(httpServer)
+const io = new Server(httpServer, {
+	cors: {
+		origin: '*',
+		methods: ['GET', 'POST'],
+	}
+})
 
 app.get('/', (req, res) => {
 	res.json({ msg: 'Hello world from socket' })

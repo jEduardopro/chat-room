@@ -11,6 +11,7 @@
 							v-model="username"
 							autofocus 
 							:disabled="loading"
+							@keyup.enter="join"
 						/>
 						<small v-if="errorMessage" class="text-red-500 text-xs" v-text="errorMessage"></small>
 					</div>
@@ -59,7 +60,6 @@ const join = async () => {
 	try {
 		const {data} = await register(username.value)		
 		store.commit('user/setUser', data)
-		// localStorage.setItem('auth-user', JSON.stringify(data))
 		router.push('/chat')
 	} catch (error: any) {
 		console.log(error);

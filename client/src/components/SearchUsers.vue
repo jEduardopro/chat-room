@@ -66,7 +66,7 @@ const clearSearchInput = () => {
 const openChat = async (user_id: string) => {
 	clearSearchInput()
 
-	store.commit('chat/loadingChat', true)
+	store.commit('chat/setLoadingChat', true)
 	try {
 		const payload = {
 			user: user.value!._id,
@@ -84,6 +84,6 @@ const openChat = async (user_id: string) => {
 	} catch (error) {
 		console.log(error);
 	}
-	store.commit('chat/loadingChat', false)
+	store.commit('chat/setLoadingChat', false)
 }
 </script>

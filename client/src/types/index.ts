@@ -16,6 +16,7 @@ export type Message = {
 	chat: Chat;
 	content: string;
 	sender: User;
+	createdAt: string;
 	updatedAt: string;
 }
 

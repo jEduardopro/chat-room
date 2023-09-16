@@ -44,7 +44,6 @@ const main = async () => {
 			socket.on('joinChat', (chatId) => {
 				socket.join(chatId)
 				console.log('User joined chat: ', chatId);
-				
 			})
 
 			socket.on('typing', (room) => socket.to(room).emit('typing'))
@@ -69,6 +68,15 @@ const main = async () => {
 					console.log('message sent to: ', user._id);
 				})
 				
+			})
+
+			socket.on('disconnecting', () => {
+				console.log('user disconnecting');
+				socket.rooms.forEach((room) => {
+					console.log('room disconnected: ', room);
+					
+					socket.to(room).emit('userDisconnected', socket.id)
+				})
 			})
 
 			socket.on('disconnect', () => {

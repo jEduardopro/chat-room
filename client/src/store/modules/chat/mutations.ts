@@ -5,6 +5,9 @@ const mutations: MutationTree<ChatState> = {
 	setChats(state: ChatState, chats) {
 		state.chats = chats;
 	},
+	setMessages(state: ChatState, messages) {
+		state.messages = messages;
+	},
 	setLoadingChat(state: ChatState, status) {
 		state.loadingChat = status;
 	},

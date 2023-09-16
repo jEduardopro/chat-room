@@ -13,6 +13,8 @@ export type User = {
 
 export type Message = {
 	content: string;
+	sender: User;
+	updatedAt: string;
 }
 
 export interface Response<T> {

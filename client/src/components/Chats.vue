@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="flex box-border p-2 border-b border-slate-200 cursor-pointer hover:bg-slate-100"
+		class="flex box-border px-2 py-3 border-b border-slate-200 cursor-pointer hover:bg-slate-100"
 		v-for="chat in chats"
 		:key="chat._id"
 	>
@@ -13,7 +13,7 @@
 					<p class="text-slate-700 font-bold flex-grow capitalize" v-text="chat.chatName"></p>
 					<span class="text-xs text-slate-400">10:24</span>
 				</div>
-				<small v-if="chat.latestMessage" class="text-slate-400 text-sm" v-html="chat.latestMessage.content"></small>
+				<small v-if="chat.latestMessage" class="text-slate-400 text-xs" v-html="chat.latestMessage.content"></small>
 			</div>
 			<div></div>
 		</div>

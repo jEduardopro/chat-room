@@ -18,7 +18,7 @@ const getChat = async (req: Request, res: Response) => {
 		]
 	}).populate('users')
 		.populate({ path: 'latestMessage', strictPopulate: false })
-	
+
 	const userChat = await User.populate(chat, { path: 'latestMessage.sender', select: 'name pic' })
 
 	if (userChat.length > 0) {
@@ -27,8 +27,8 @@ const getChat = async (req: Request, res: Response) => {
 
 	const userForChat = await User.findById(user_id).select('name')
 
-	const newChat = await Chat.create({chatName: userForChat.name, users: [user, user_id], lastestMessage: null	})
-	const newUserChat = await Chat.findOne({ _id: newChat._id }).populate('users').populate({ path: 'latestMessage', strictPopulate: false})
+	const newChat = await Chat.create({ chatName: userForChat.name, users: [user, user_id], latestMessage: null })
+	const newUserChat = await Chat.findOne({ _id: newChat._id }).populate('users').populate({ path: 'latestMessage', strictPopulate: false })
 	return res.status(200).json(newUserChat)
 }
 
@@ -39,7 +39,7 @@ const getChatsByUser = async (req: Request, res: Response) => {
 			message: "Current User ID is required"
 		})
 	}
-	
+
 	Chat.find({ users: { $elemMatch: { $eq: req.params.user } } })
 		.populate('users')
 		.populate({ path: 'latestMessage', strictPopulate: false })

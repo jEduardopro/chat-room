@@ -34,12 +34,43 @@ const main = async () => {
 		app.use('/api/message', messageRoutes)
 
 		io.on('connection', (socket) => {
-			console.log('Connection is ready');
-			socket.on('send-message', (msg) => {
-				console.log('msg received: ', msg)
-				socket.emit('message-from-server', msg)
-				// io.emit('message-broadcast', msg)
+			socket.on('join', (userID) => {
+				console.log('user received: ', userID)
+
+				socket.join(userID)
+				socket.emit('connected')
+				
 			})
+			socket.on('joinChat', (chatId) => {
+				socket.join(chatId)
+				console.log('User joined chat: ', chatId);
+				
+			})
+
+			socket.on('typing', (room) => socket.to(room).emit('typing'))
+			socket.on('stopTyping', (room) => socket.to(room).emit('stopTyping'))
+
+			socket.on('newMessage', (message) => {
+				console.log('new message received ')
+				const chat = message.chat
+				if (!chat || !chat.users) {
+					console.log('chat or chat.users not defined');
+					return
+				}
+				// const rooms = io.of("/").adapter.rooms;
+				// const sids = io.of("/").adapter.sids;
+				// console.log('rooms: ', rooms);
+				// console.log('sids: ', sids);
+				
+				
+				chat.users.forEach((user) => {
+					if (user._id === message.sender._id) return
+					socket.to(user._id).emit('messageReceived', message)
+					console.log('message sent to: ', user._id);
+				})
+				
+			})
+
 			socket.on('disconnect', () => {
 				console.log('User disconnected');
 			})

@@ -13,6 +13,7 @@ export type User = {
 
 export type Message = {
 	_id: string;
+	chat: Chat;
 	content: string;
 	sender: User;
 	updatedAt: string;

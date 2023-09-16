@@ -6,7 +6,7 @@
 		<div class="flex items-start flex-grow">
 			<div class="flex flex-col w-full">
 				<div class="flex justify-between items-start">
-					<p class="text-slate-700 font-bold flex-grow capitalize" v-text="chatName"></p>
+					<p class="text-slate-700 leading-none font-bold flex-grow capitalize" v-text="chatName"></p>
 					<span class="text-xs text-slate-400">
 						<timeago
 							:datetime="updatedAt"
@@ -19,7 +19,7 @@
 						/>
 					</span>
 				</div>
-				<small v-if="chat.latestMessage" class="text-slate-400 text-xs" v-html="chat.latestMessage.content"></small>
+				<small v-if="chat.latestMessage" class="text-slate-400 text-xs mt-1" v-html="chat.latestMessage.content"></small>
 			</div>
 			<div></div>
 		</div>

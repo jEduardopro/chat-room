@@ -37,10 +37,6 @@ import {register} from '@/services/UserService'
 
 onMounted(() => {
 	setSocket();
-
-	socket.on('message-from-server', (data) => {
-		console.log('message received from server: ', data);
-	})
 })
 
 const router = useRouter()

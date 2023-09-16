@@ -1,28 +1,29 @@
 <template>
 	<div class="w-full h-screen flex flex-col overflow-hidden">
 		<Header/>
-		<main class="flex h-[90%] items-center gap-x-5 py-3 px-2">
-			<div class="h-full rounded shadow py-5 px-2 w-1/3 box-border border border-blue-100">
+		<main class="flex flex-col md:flex-row h-[90%] items-center gap-x-5 py-3 px-2">
+			<div class="h-full rounded shadow py-5 px-2 w-full md:w-1/3 box-border border border-blue-100">
 				<SearchUsers/>
 				<div class="flex flex-col mt-5 max-h-[660px] overflow-y-auto pb-10">
 					<Chats/>
 				</div>
 			</div>
-			<div class="h-full rounded shadow p-5 w-2/3 box-border border border-blue-100 overflow-y-hidden">
-				<div class="flex flex-col h-full box-border gap-y-1 bg-blue-50 p-2 rounded overflow-hidden">
-					<div class="flex flex-col flex-grow overflow-y-auto">
-						<p>
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente accusantium obcaecati sint exercitationem repellendus, amet dolore vero, debitis quaerat ipsam magnam. Nulla quod officiis consectetur alias numquam eaque veniam beatae aliquid voluptatum quos quibusdam vel veritatis, fugit laborum nobis maxime, provident corrupti! Ea aliquid voluptatem quaerat distinctio, provident ipsam veniam eveniet aliquam voluptatum fugiat incidunt, doloremque inventore culpa ab nostrum vel a libero? Aperiam, quidem iusto? Illo autem nemo nobis quasi voluptatibus magni architecto voluptatum praesentium ex adipisci voluptatem deleniti doloribus quae numquam nesciunt, eos quis explicabo illum doloremque aperiam cumque! Deleniti voluptatum debitis amet vitae adipisci explicabo ex dignissimos magnam soluta rerum mollitia beatae dolores alias, quisquam unde eius tempora similique neque? Id maiores perferendis repudiandae ratione excepturi libero nihil eius quae omnis veritatis labore nemo laborum rerum porro iste, tenetur, inventore veniam sit at doloremque soluta totam, sapiente officiis et! Veritatis maiores quam in vitae dolorem itaque qui eligendi asperiores quae consequatur dolorum, sapiente, quo nisi, praesentium culpa laboriosam ab nam recusandae vel accusantium distinctio deleniti. Illum odit nihil, veniam itaque dicta molestiae corporis ut quod atque, sunt nam? Possimus, atque nihil? Quae perferendis accusamus quod asperiores. Dicta consequuntur totam voluptatum tenetur hic? Reiciendis labore architecto assumenda voluptate? 
-						</p>
-						<p>
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente accusantium obcaecati sint exercitationem repellendus, amet dolore vero, debitis quaerat ipsam magnam. Nulla quod officiis consectetur alias numquam eaque veniam beatae aliquid voluptatum quos quibusdam vel veritatis, fugit laborum nobis maxime, provident corrupti! Ea aliquid voluptatem quaerat distinctio, provident ipsam veniam eveniet aliquam voluptatum fugiat incidunt, doloremque inventore culpa ab nostrum vel a libero? Aperiam, quidem iusto? Illo autem nemo nobis quasi voluptatibus magni architecto voluptatum praesentium ex adipisci voluptatem deleniti doloribus quae numquam nesciunt, eos quis explicabo illum doloremque aperiam cumque! Deleniti voluptatum debitis amet vitae adipisci explicabo ex dignissimos magnam soluta rerum mollitia beatae dolores alias, quisquam unde eius tempora similique neque? Id maiores perferendis repudiandae ratione excepturi libero nihil eius quae omnis veritatis labore nemo laborum rerum porro iste, tenetur, inventore veniam sit at doloremque soluta totam, sapiente officiis et! Veritatis maiores quam in vitae dolorem itaque qui eligendi asperiores quae consequatur dolorum, sapiente, quo nisi, praesentium culpa laboriosam ab nam recusandae vel accusantium distinctio deleniti. Illum odit nihil, veniam itaque dicta molestiae corporis ut quod atque, sunt nam? Possimus, atque nihil? Quae perferendis accusamus quod asperiores. Dicta consequuntur totam voluptatum tenetur hic? Reiciendis labore architecto assumenda voluptate? 
-						</p>
-						<p>
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente accusantium obcaecati sint exercitationem repellendus, amet dolore vero, debitis quaerat ipsam magnam. Nulla quod officiis consectetur alias numquam eaque veniam beatae aliquid voluptatum quos quibusdam vel veritatis, fugit laborum nobis maxime, provident corrupti! Ea aliquid voluptatem quaerat distinctio, provident ipsam veniam eveniet aliquam voluptatum fugiat incidunt, doloremque inventore culpa ab nostrum vel a libero? Aperiam, quidem iusto? Illo autem nemo nobis quasi voluptatibus magni architecto voluptatum praesentium ex adipisci voluptatem deleniti doloribus quae numquam nesciunt, eos quis explicabo illum doloremque aperiam cumque! Deleniti voluptatum debitis amet vitae adipisci explicabo ex dignissimos magnam soluta rerum mollitia beatae dolores alias, quisquam unde eius tempora similique neque? Id maiores perferendis repudiandae ratione excepturi libero nihil eius quae omnis veritatis labore nemo laborum rerum porro iste, tenetur, inventore veniam sit at doloremque soluta totam, sapiente officiis et! Veritatis maiores quam in vitae dolorem itaque qui eligendi asperiores quae consequatur dolorum, sapiente, quo nisi, praesentium culpa laboriosam ab nam recusandae vel accusantium distinctio deleniti. Illum odit nihil, veniam itaque dicta molestiae corporis ut quod atque, sunt nam? Possimus, atque nihil? Quae perferendis accusamus quod asperiores. Dicta consequuntur totam voluptatum tenetur hic? Reiciendis labore architecto assumenda voluptate? 
-						</p>
-						<p>
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente accusantium obcaecati sint exercitationem repellendus, amet dolore vero, debitis quaerat ipsam magnam. Nulla quod officiis consectetur alias numquam eaque veniam beatae aliquid voluptatum quos quibusdam vel veritatis, fugit laborum nobis maxime, provident corrupti! Ea aliquid voluptatem quaerat distinctio, provident ipsam veniam eveniet aliquam voluptatum fugiat incidunt, doloremque inventore culpa ab nostrum vel a libero? Aperiam, quidem iusto? Illo autem nemo nobis quasi voluptatibus magni architecto voluptatum praesentium ex adipisci voluptatem deleniti doloribus quae numquam nesciunt, eos quis explicabo illum doloremque aperiam cumque! Deleniti voluptatum debitis amet vitae adipisci explicabo ex dignissimos magnam soluta rerum mollitia beatae dolores alias, quisquam unde eius tempora similique neque? Id maiores perferendis repudiandae ratione excepturi libero nihil eius quae omnis veritatis labore nemo laborum rerum porro iste, tenetur, inventore veniam sit at doloremque soluta totam, sapiente officiis et! Veritatis maiores quam in vitae dolorem itaque qui eligendi asperiores quae consequatur dolorum, sapiente, quo nisi, praesentium culpa laboriosam ab nam recusandae vel accusantium distinctio deleniti. Illum odit nihil, veniam itaque dicta molestiae corporis ut quod atque, sunt nam? Possimus, atque nihil? Quae perferendis accusamus quod asperiores. Dicta consequuntur totam voluptatum tenetur hic? Reiciendis labore architecto assumenda voluptate? 
-						</p>
+			<div class="h-full flex flex-col rounded shadow p-5 w-full mt-3 md:w-2/3 md:mt-0 box-border border border-blue-100 overflow-y-hidden">
+				<div v-if="chatUser" class="flex flex-shrink min-h-[40px]">
+					<div class="flex flex-col items-stretch mr-3">
+						<img class="w-8 h-8 rounded-full" :src="chatUser.pic" :alt="chatUser.name">
+					</div>
+					<div class="flex items-start flex-grow">
+						<div class="flex flex-col justify-start items-start w-full">
+							<div class="flex justify-between items-start">
+								<p class="text-slate-700 leading-none font-bold flex-grow capitalize" v-text="chatUser.name"></p>
+							</div>
+							<small v-show="isTyping" class="text-slate-400 text-xs">typing...</small>
+						</div>
+					</div>
+				</div>
+				<div class="flex flex-col flex-grow box-border gap-y-1 bg-blue-50 p-2 rounded overflow-hidden">
+					<div ref="conversation" class="flex flex-col flex-grow overflow-y-auto">
 						<div 
 							v-for="message in messages" 
 							:key="message._id"
@@ -36,12 +37,12 @@
 						>
 						</div>
 					</div>
-					<div class="flex box-border flex-shrink">
+					<div class="flex flex-col box-border flex-shrink">
 						<input 
 							type="text" 
 							class="w-full border border-slate-200 rounded p-2 outline-none"
 							v-model="content"
-							placeholder="Type a message"
+							placeholder="Type a message"							
 							@keyup.enter="send"
 						/>
 					</div>
@@ -64,26 +65,84 @@ import { getMessagesByChat } from '../services/MessageService';
 import { Message } from '@/types';
 
 onMounted(() => {
-	shouldRedirectToLanding()
+	if (!user.value) {
+		return router.replace({name: 'Home'})
+	}
+	joinToRoom()
+	listenEvents()
 })
 
 const store = useStore<StateInterface>();
 const router = useRouter()
 const content = ref('')
 const loading = ref(false)
+const conversation = ref<HTMLElement|null>(null)
 const messages = ref<Message[]>([])
+const typingTimeout = ref<any|null>(null)
+const isTyping = ref(false)
 
 const user = computed(() => store.state.user.user)
+const socket = computed(() => store.state.socket.socket!)
 const chatSelected = computed(() => store.state.chat.chatSelected)
+const chatUser = computed(() => {
+	if (!chatSelected.value) {
+		return null
+	}
+	const chat = chatSelected.value
+	return chat.users[0]._id === user.value?._id ? chat.users[1] : chat.users[0]
+})
 
 watch(chatSelected, () => {
 	fetchMessages()
 })
 
-const shouldRedirectToLanding = () => {
-	if (!user.value) {
-		router.replace({name: 'Home'})
+watch(content, () => {
+	typingHandler()
+})
+
+const joinToRoom = () => {
+	socket.value.emit('join', user.value!._id)
+	socket.value.on('connected', () => {
+		console.log('connected');
+	})
+}
+
+const listenEvents = () => {
+	socket.value.on('messageReceived', (message: Message) => {
+		console.log('messageReceived', message);
+		
+		if (!chatSelected.value || chatSelected.value?._id !== message.chat._id) {
+			// give notification
+			console.log('received notification');
+			
+			return
+		}
+		messages.value = [...messages.value, message]
+		moveScrollToBottom()
+	})
+	socket.value.on('typing', () => isTyping.value = true)
+	socket.value.on('stopTyping', () => isTyping.value = false)
+}
+
+const typingHandler = () => {
+	socket.value.emit('typing', chatSelected.value?._id)
+
+	if (typingTimeout.value) {
+		clearTimeout(typingTimeout.value)
 	}
+
+	typingTimeout.value = setTimeout(() => {
+		socket.value.emit('stopTyping', chatSelected.value?._id)
+	}, 500);
+}
+
+const moveScrollToBottom = () => {
+	if (!conversation.value) {
+		return
+	}
+	setTimeout(() => {
+		conversation.value!.scroll({top: conversation.value!.scrollHeight})
+	}, 5);
 }
 
 const fetchMessages = async () => {
@@ -94,6 +153,8 @@ const fetchMessages = async () => {
 	try {
 		const { data } = await getMessagesByChat(chatSelected.value._id)
 		messages.value = data
+		socket.value.emit('joinChat', chatSelected.value._id)
+		moveScrollToBottom()
 	} catch (error) {
 		console.log(error);
 	}
@@ -112,11 +173,18 @@ const send = async () => {
 		}
 		content.value = ''
 		const { data } = await sendMessage(payload)
-		console.log('message response: ', data);
-		
+		messages.value = [...messages.value, data]
+		socket.value.emit('newMessage', data)
+		moveScrollToBottom()		
 	} catch (error) {
 		console.log(error);
 	}
 }
 
 </script>
+
+<style>
+.flex.flex-col.flex-grow.overflow-y-auto::-webkit-scrollbar {
+	display: none;
+}
+</style>

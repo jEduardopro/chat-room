@@ -6,7 +6,7 @@
 		<div class="flex items-start flex-grow">
 			<div class="flex flex-col w-full">
 				<div class="flex justify-between items-start">
-					<p class="text-slate-700 font-bold flex-grow capitalize" v-text="chat.chatName"></p>
+					<p class="text-slate-700 font-bold flex-grow capitalize" v-text="chatName"></p>
 					<span class="text-xs text-slate-400">
 						<timeago
 							:datetime="updatedAt"
@@ -41,12 +41,18 @@ const props = defineProps({
 
 const store = useStore<StateInterface>()
 
+const user = computed(() => store.state.user.user)
+
 const pic = computed(() => {
-	return props.chat.users.find(user => user._id !== store.state.user.user?._id)?.pic
+	return props.chat.users.find(u => u._id !== user.value?._id)?.pic
 })
 
 const updatedAt = computed(() => {
 	return new Date(props.chat.latestMessage!.updatedAt)
+})
+
+const chatName = computed(() => {
+	return props.chat.users[0]._id === user.value?._id ? props.chat.users[1].name : props.chat.users[0].name
 })
 
 </script>

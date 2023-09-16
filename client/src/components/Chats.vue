@@ -3,6 +3,7 @@
 		class="flex box-border px-2 py-3 border-b border-slate-200 cursor-pointer hover:bg-slate-100"
 		v-for="chat in chats"
 		:key="chat._id"
+		@click="setChat(chat)"
 	>
 		<ChatRow :chat="chat" />
 	</div>
@@ -14,6 +15,7 @@ import { StateInterface } from '@/store';
 import { onMounted, computed } from 'vue';
 import { useStore } from 'vuex';
 import ChatRow from '@/components/ChatRow.vue'
+import { Chat } from '@/types';
 
 onMounted(() => {
 	getAllChats()
@@ -32,7 +34,10 @@ const getAllChats = async () => {
 		store.commit('chat/setChats', data)
 	} catch (error) {
 		console.log(error);
-		
 	}
+}
+
+const setChat = (chat: Chat) => {
+	store.commit('chat/setChatSelected', chat)
 }
 </script>

@@ -12,6 +12,7 @@ export type User = {
 }
 
 export type Message = {
+	_id: string;
 	content: string;
 	sender: User;
 	updatedAt: string;

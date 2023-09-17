@@ -14,7 +14,7 @@ const registerUser = async (req: Request, res: Response) => {
 
 	if (userExists) {
 		return res.status(200).json({
-			_id: userExists._id,
+			id: userExists._id,
 			name: userExists.name,
 			pic: userExists.pic,
 		})
@@ -24,7 +24,7 @@ const registerUser = async (req: Request, res: Response) => {
 	
 	if (user) {
 		return res.status(200).json({
-			_id: user._id,
+			id: user._id,
 			name: user.name,
 			pic: user.pic,
 		})

@@ -14,6 +14,14 @@ const MessageSchema = new mongoose.Schema({
 	timestamps: true
 })
 
+MessageSchema.set('toJSON', {
+	transform: (doc, obj) => {
+		obj.id = obj._id
+		delete obj.__v
+		delete obj._id
+	}
+})
+
 const Message = mongoose.model('Message', MessageSchema)
 
 export default Message

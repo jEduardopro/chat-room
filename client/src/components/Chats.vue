@@ -1,16 +1,11 @@
 <template>
-	<div
-		class="flex box-border px-2 py-3 border-b border-slate-200 cursor-pointer hover:bg-slate-100"
-		v-for="chat in chats"
-		:key="chat._id"
-		@click="setChat(chat)"
-	>
+	<div class="flex box-border px-2 py-3 border-b border-slate-200 cursor-pointer hover:bg-slate-100" v-for="chat in chats"
+		:key="chat.id" @click="setChat(chat)">
 		<ChatRow :chat="chat" />
 	</div>
 </template>
 
 <script setup lang="ts">
-import { getChatsByUser } from '@/services/ChatService';
 import { StateInterface } from '@/store';
 import { onMounted, computed } from 'vue';
 import { useStore } from 'vuex';
@@ -22,7 +17,7 @@ onMounted(() => {
 })
 
 const store = useStore<StateInterface>()
-const chats = computed(() => store.state.chat.chats)
+const chats = computed(() => store.state.chat.chats.sort((a, b) => Number(b.pinned) - Number(a.pinned)) )
 const user = computed(() => store.state.user.user)
 
 const getAllChats = async () => {
@@ -30,8 +25,7 @@ const getAllChats = async () => {
 		return
 	}
 	try {
-		const { data } = await getChatsByUser(user.value!._id)
-		store.commit('chat/setChats', data)
+		store.dispatch('chat/getAllChats', user.value!.id)
 	} catch (error) {
 		console.log(error);
 	}

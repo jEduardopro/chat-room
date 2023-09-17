@@ -1,11 +1,16 @@
 import { ActionTree } from 'vuex';
-import { UserState } from './state';
+import { ChatState } from './state';
 import { StateInterface } from '../../index';
+import { getChatsByUser } from '@/services/ChatService';
 
-
-const actions: ActionTree<UserState, StateInterface> = {
-	someAction( /*{ commit }, payload  */) {
-		// a line to prevent linter errors
+const actions: ActionTree<ChatState, StateInterface> = {
+	async getAllChats( { commit }, userId ) {
+		try {
+			const { data } = await getChatsByUser(userId);
+			commit('setChats', data);
+		} catch (error) {
+			console.log(error);			
+		}
 	}
 }
 

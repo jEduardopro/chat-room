@@ -43,7 +43,7 @@ const getChatsByUser = async (req: Request, res: Response) => {
 	Chat.find({ users: { $elemMatch: { $eq: req.params.user } } })
 		.populate('users')
 		.populate({ path: 'latestMessage', strictPopulate: false })
-		.sort({ updatedAt: -1 })
+		.sort({ createdAt: -1 })
 		.then(async (chats) => {
 			const results = await User.populate(chats, { path: 'latestMessage.sender', select: 'name pic', strictPopulate: false })
 
@@ -51,4 +51,10 @@ const getChatsByUser = async (req: Request, res: Response) => {
 		})
 }
 
-export { getChat, getChatsByUser }
+const pinChat = async (req: Request, res: Response) => {
+	await Chat.findByIdAndUpdate(req.params.id, { pinned: req.body.pin })
+
+	res.status(200).json({ message: 'Chat updated' })
+}
+
+export { getChat, getChatsByUser, pinChat }

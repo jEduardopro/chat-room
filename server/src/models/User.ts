@@ -7,6 +7,14 @@ const UserSchema = new mongoose.Schema({
 	timestamps: true
 })
 
+UserSchema.set('toJSON', {
+	transform: (doc, obj) => {
+		obj.id = obj._id
+		delete obj.__v
+		delete obj._id
+	}
+})
+
 const User = mongoose.model('User', UserSchema)
 
 export default User

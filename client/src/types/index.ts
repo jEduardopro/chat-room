@@ -1,18 +1,19 @@
 export type Chat = {
-	_id: string
+	id: string
 	chatName: string
 	users: User[],
-	latestMessage: Message|null
+	latestMessage: Message | null;
+	pinned: boolean;
 }
 
 export type User = {
-	_id: string;
+	id: string;
 	name: string;
 	pic: string;
 }
 
 export type Message = {
-	_id: string;
+	id: string;
 	chat: Chat;
 	content: string;
 	sender: User;

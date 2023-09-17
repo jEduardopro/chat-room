@@ -63,9 +63,9 @@ const main = async () => {
 				
 				
 				chat.users.forEach((user) => {
-					if (user._id === message.sender._id) return
-					socket.to(user._id).emit('messageReceived', message)
-					console.log('message sent to: ', user._id);
+					if (user.id === message.sender.id) return
+					socket.to(user.id).emit('messageReceived', message)
+					console.log('message sent to: ', user.id);
 				})
 				
 			})

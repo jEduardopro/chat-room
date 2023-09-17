@@ -12,8 +12,20 @@ const ChatSchema = new mongoose.Schema({
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Message'
 	},
+	pinned: {
+		type: Boolean,
+		default: false
+	}
 }, {
 	timestamps: true
+})
+
+ChatSchema.set('toJSON', {
+	transform: (doc, obj) => {
+		obj.id = obj._id
+		delete obj.__v
+		delete obj._id
+	}
 })
 
 const Chat = mongoose.model('Chat', ChatSchema)

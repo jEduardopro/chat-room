@@ -1,3 +1,12 @@
+## Live Demo
+```
+https://chat-room-eduardo.netlify.app
+```
+Available users to test
+-	guest
+-	john doe
+
+
 ## Clone project
 ```
 git clone https://github.com/jEduardopro/chat-room.git

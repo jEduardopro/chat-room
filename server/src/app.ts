@@ -36,12 +36,12 @@ const main = async () => {
 
 		io.on('connection', socket)
 		
-		httpServer.listen(port, () => {
-			console.log(`Server running on port ${port}`.yellow.bold)
+		httpServer.listen(3000, () => {
+			console.log(`Server running on port ${port}`.yellow)
 		})
 
 	} catch (error) {
-		console.log(`Error: ${error.message}`.red.bold);
+		console.log(`Error: ${error.message}`.red);
 	}
 }
 

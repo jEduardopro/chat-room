@@ -24,16 +24,6 @@ const sockets = (socket: Socket) => {
 			if (user.id === message.sender.id) return
 			socket.to(user.id).emit('messageReceived', message)
 		})
-		
-	})
-
-	socket.on('disconnecting', () => {
-		socket.rooms.forEach((room) => {			
-			socket.to(room).emit('userDisconnected', socket.id)
-		})
-	})
-
-	socket.on('disconnect', () => {
 	})
 }
 

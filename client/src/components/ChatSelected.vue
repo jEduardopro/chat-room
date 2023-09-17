@@ -84,18 +84,31 @@ watch(messages, () => {
 	moveScrollToBottom()
 })
 
+const getFormatDate = (date: string) => {
+	const today = DateTime.local().toFormat('dd/MM/yyyy')
+	const yesterday = DateTime.local().minus({ days: 1 }).toFormat('dd/MM/yyyy')
+	if (date === today) {
+		return 'Today'
+	} else if (date === yesterday) {
+		return 'Yesterday'
+	}
+
+	return date
+}
+
 const groupedMessagesByDate = computed(() => {
 	if (!messages.value.length) {
 		return []
 	}
-	const groups = messages.value.reduce((groups, msg) => {
+	const groups: { [k: string]: MessageType[] } = messages.value.reduce((groups, msg) => {
 		const date = DateTime.fromISO(msg.createdAt).toFormat('dd/MM/yyyy')
-		if (!groups[date]) {
-			groups[date] = [];
+		const formattedDate = getFormatDate(date)
+		if (!groups[formattedDate]) {
+			groups[formattedDate] = [];
 		}
-		groups[date].push(msg)
+		groups[formattedDate].push(msg)
 		return groups
-	}, {} as { [k: string]: MessageType[] })
+	}, {})
 
 	const groupedMessages = Object.keys(groups).map(date => {
 		return {

@@ -2,7 +2,7 @@
 ```
 https://chat-room-eduardo.netlify.app
 ```
-Available users to test
+Users to test
 -	guest
 -	john doe
 
